@@ -36,7 +36,7 @@ public class UserDto {
     private Role role;
 
     /*
-     * function to map from User to UserDto
+     * function that allow us to map from User to UserDto
      *
      * @param User user
      * */
@@ -61,7 +61,7 @@ public class UserDto {
     }
 
     /*
-     * function to map from UserDto to User
+     * function that allow us to map from UserDto to User
      *
      * @param UserDto userDto
      * */

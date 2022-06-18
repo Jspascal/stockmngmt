@@ -20,7 +20,7 @@ public class SaleDto {
     private Integer idEntreprise;
 
     /*
-     * function to map from Sale to SaleDto
+     * function that allow us to map from Sale to SaleDto
      *
      * @param Sale sale
      * */
@@ -41,7 +41,7 @@ public class SaleDto {
     }
 
     /*
-     * function to map from SaleDto to Sale
+     * function that allow us to map from SaleDto to Sale
      *
      * @param SaleDto saleDto
      * */

@@ -23,7 +23,7 @@ public class StockMvtDto {
     private Article article;
 
     /*
-     * function to map from StockMvt to StockMvtDto
+     * function that allow us to map from StockMvt to StockMvtDto
      *
      * @param StockMvt stockMvt
      * */
@@ -44,7 +44,7 @@ public class StockMvtDto {
     }
 
     /*
-     * function to map from StockMvtDto to StockMvt
+     * function that allow us to map from StockMvtDto to StockMvt
      *
      * @param StockMvtDto stockMvtDto
      * */

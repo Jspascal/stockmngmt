@@ -10,10 +10,10 @@ import com.business.stockmngmt.services.CategoryService;
 import com.business.stockmngmt.validator.CategoryValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -24,6 +24,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * @param categoryDto
+     *
      * @return CategoryDto
      */
     @Override
@@ -43,6 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     /**
      * @param id
+     *
      * @return CategoryDto
      */
     @Override
@@ -67,7 +69,8 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<CategoryDto> findAll() {
         return categoryRepository.findAll().stream()
-            .map(CategoryDto::fro);
+            .map(CategoryDto::fromEntity)
+            .collect(Collectors.toList());
     }
 
     /**
@@ -75,6 +78,10 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void delete(Integer id) {
-
+        if (id == null) {
+            log.error("Category ID is null");
+            return;
+        }
+        categoryRepository.deleteById(id);
     }
 }

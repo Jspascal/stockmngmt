@@ -30,7 +30,7 @@ public class ArticleDto {
     private Integer idEntreprise;
 
     /*
-     * function to map from Article to ArticleDto
+     * function that allow us to map from Article to ArticleDto
      *
      * @param Article article
      * */
@@ -53,7 +53,7 @@ public class ArticleDto {
     }
 
     /*
-     * function to map from ArticleDto to Article
+     * function that allow us to map from ArticleDto to Article
      *
      * @param Article articleDto
      * */

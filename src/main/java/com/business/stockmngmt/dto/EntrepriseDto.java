@@ -34,7 +34,7 @@ public class EntrepriseDto {
     private List<UserDto> users;
 
     /*
-     * function to map from Entreprise to EntrepriseDto
+     * function that allow us to map from Entreprise to EntrepriseDto
      *
      * @param Entreprise entreprise
      * */
@@ -57,7 +57,7 @@ public class EntrepriseDto {
     }
 
     /*
-     * function to map from EntrepriseDto to Entreprise
+     * function that allow us to map from EntrepriseDto to Entreprise
      *
      * @param EntrepriseDto entrepriseDto
      * */

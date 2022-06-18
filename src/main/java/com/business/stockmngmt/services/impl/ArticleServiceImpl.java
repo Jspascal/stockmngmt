@@ -26,7 +26,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @param articleDto
+     * @param articleDto - DTO representation
+     * @throws InvalidEntityException - throw an exception the validation fails
      * @return ArticleDto
      */
     @Override
@@ -46,6 +47,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     /**
      * @param id
+     * @throws EntityNotFoundException -
      * @return ArticleDto
      */
     @Override
@@ -59,7 +61,7 @@ public class ArticleServiceImpl implements ArticleService {
 
         return Optional.of(ArticleDto.fromEntity(article.get())).orElseThrow(() ->
                 new EntityNotFoundException(
-                        "No article with the ID" + id + "inside the database",
+                        "No article with the ID " + id + "inside the database",
                         ErrorCodes.ARTICLE_NOT_FOUND)
         );
     }

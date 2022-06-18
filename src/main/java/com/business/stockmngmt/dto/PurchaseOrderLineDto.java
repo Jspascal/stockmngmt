@@ -17,7 +17,7 @@ public class PurchaseOrderLineDto {
     private PurchaseOrder purchaseOrder;
 
     /*
-     * function to map from PurchaseOrderLine to PurchaseOrderLineDto
+     * function that allow us to map from PurchaseOrderLine to PurchaseOrderLineDto
      *
      * @param PurchaseOrderLine purchaseOrderLine
      * */
@@ -36,7 +36,7 @@ public class PurchaseOrderLineDto {
     }
 
     /*
-     * function to map from PurchaseOrderLineDto to PurchaseOrderLine
+     * function that allow us to map from PurchaseOrderLineDto to PurchaseOrderLine
      *
      * @param PurchaseOrderLineDto purchaseOrderLineDto
      * */

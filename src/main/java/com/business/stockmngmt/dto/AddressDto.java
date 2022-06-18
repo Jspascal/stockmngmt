@@ -19,7 +19,7 @@ public class AddressDto {
     private String country;
 
     /*
-    * function to map from Address to AddressDto
+    * function that allow us to map from Address to AddressDto
     *
     * @param Address address
     * */
@@ -39,7 +39,7 @@ public class AddressDto {
     }
 
     /*
-     * function to map from AddressDto to Address
+     * function that allow us to map from AddressDto to Address
      *
      * @param Address addressDto
      * */

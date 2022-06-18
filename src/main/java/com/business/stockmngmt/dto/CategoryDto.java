@@ -22,7 +22,7 @@ public class CategoryDto {
     private List<ArticleDto> articles;
 
     /*
-     * function to map from Category to CategoryDto
+     * function that allow us to map from Category to CategoryDto
      *
      * @param Category category
      * */
@@ -41,7 +41,7 @@ public class CategoryDto {
     }
 
     /*
-     * function to map from CategoryDto to Category
+     * function that allow us to map from CategoryDto to Category
      *
      * @param CategoryDto categoryDto
      * */

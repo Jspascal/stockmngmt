@@ -30,7 +30,7 @@ public class ProviderDto {
     private List<PurchaseOrderDto> purchaseOrders;
 
     /*
-     * function to map from Provider to ProviderDto
+     * function that allow us to map from Provider to ProviderDto
      *
      * @param Provider provider
      * */
@@ -52,7 +52,7 @@ public class ProviderDto {
     }
 
     /*
-     * function to map from ProviderDto to Provider
+     * function that allow us to map from ProviderDto to Provider
      *
      * @param ProviderDto providerDto
      * */

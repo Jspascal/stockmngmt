@@ -31,7 +31,7 @@ public class ClientDto {
     private List<SaleOrderDto> saleOrders;
 
     /*
-     * function to map from Client to ClientDto
+     * function that allow us to map from Client to ClientDto
      *
      * @param Client client
      * */
@@ -53,7 +53,7 @@ public class ClientDto {
     }
 
     /*
-     * function to map from ClientDto to Client
+     * function that allow us to map from ClientDto to Client
      *
      * @param ClientDto clientDto
      * */

@@ -26,7 +26,7 @@ public class SaleOrderDto {
     private List<SaleOrderLineDto> saleOrderLines;
 
     /*
-     * function to map from SaleOrder to SaleOrderDto
+     * function that allow us to map from SaleOrder to SaleOrderDto
      *
      * @param SaleOrder saleOrder
      * */
@@ -46,7 +46,7 @@ public class SaleOrderDto {
     }
 
     /*
-     * function to map from SaleOrderDto to SaleOrder
+     * function that allow us to map from SaleOrderDto to SaleOrder
      *
      * @param SaleOrderDto saleOrderDto
      * */

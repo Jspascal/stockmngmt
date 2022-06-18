@@ -30,7 +30,7 @@ public class RoleDto {
     }
 
     /*
-     * function to map from RoleDto to Role
+     * function that allow us to map from RoleDto to Role
      *
      * @param RoleDto roleDto
      * */
