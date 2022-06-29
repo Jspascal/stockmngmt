@@ -11,4 +11,6 @@ public interface PurchaseOrderLineService {
     PurchaseOrderLineDto findById(Integer id);
 
     List<PurchaseOrderLineDto> findAll();
+
+    void delete(Integer id);
 }

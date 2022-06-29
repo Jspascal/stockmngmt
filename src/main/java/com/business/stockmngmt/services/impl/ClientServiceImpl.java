@@ -3,7 +3,6 @@ package com.business.stockmngmt.services.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.business.stockmngmt.dto.ArticleDto;
 import com.business.stockmngmt.dto.ClientDto;
 import com.business.stockmngmt.exception.EntityNotFoundException;
 import com.business.stockmngmt.exception.ErrorCodes;

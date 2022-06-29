@@ -11,4 +11,6 @@ public interface RoleService {
     RoleDto findById(Integer id);
 
     List<RoleDto> findAll();
+
+    void delete(Integer id);
 }

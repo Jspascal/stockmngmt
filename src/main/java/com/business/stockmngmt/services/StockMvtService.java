@@ -11,4 +11,6 @@ public interface StockMvtService {
     StockMvtDto findById(Integer id);
 
     List<StockMvtDto> findAll();
+
+    void delete(Integer id);
 }

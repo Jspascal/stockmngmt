@@ -11,4 +11,6 @@ public interface SaleService {
     SaleDto findById(Integer id);
 
     List<SaleDto> findAll();
+
+    void delete(Integer id);
 }

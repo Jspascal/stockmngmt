@@ -2,7 +2,6 @@ package com.business.stockmngmt.dto;
 
 import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.Category;
-import com.business.stockmngmt.model.Entreprise;
 import lombok.Builder;
 import lombok.Data;
 import java.math.BigDecimal;
