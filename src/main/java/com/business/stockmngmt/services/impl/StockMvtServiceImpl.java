@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.StockMvtRepository;
 import com.business.stockmngmt.services.StockMvtService;
 import com.business.stockmngmt.validator.StockMvtValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class StockMvtServiceImpl implements StockMvtService {
 
     private StockMvtRepository stockMvtRepository;
+
+    @Autowired
     public StockMvtServiceImpl(StockMvtRepository stockMvtRepository) {
         this.stockMvtRepository = stockMvtRepository;
     }

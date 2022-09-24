@@ -12,11 +12,14 @@ import com.business.stockmngmt.repository.ClientRepository;
 import com.business.stockmngmt.services.ClientService;
 import com.business.stockmngmt.validator.ClientValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Slf4j
 public class ClientServiceImpl implements ClientService {
 
     private ClientRepository clientRepository;
+
+    @Autowired
     public ClientServiceImpl(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }

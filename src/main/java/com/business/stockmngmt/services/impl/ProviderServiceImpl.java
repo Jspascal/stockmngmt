@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.ProviderRepository;
 import com.business.stockmngmt.services.ProviderService;
 import com.business.stockmngmt.validator.ProviderValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class ProviderServiceImpl implements ProviderService {
 
     private ProviderRepository providerRepository;
+
+    @Autowired
     public ProviderServiceImpl(ProviderRepository providerRepository) {
         this.providerRepository = providerRepository;
     }

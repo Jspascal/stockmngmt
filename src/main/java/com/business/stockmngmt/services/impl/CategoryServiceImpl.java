@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.CategoryRepository;
 import com.business.stockmngmt.services.CategoryService;
 import com.business.stockmngmt.validator.CategoryValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +21,8 @@ import java.util.stream.Collectors;
 public class CategoryServiceImpl implements CategoryService {
 
     private CategoryRepository categoryRepository;
+
+    @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository) { this.categoryRepository = categoryRepository; }
 
     /**

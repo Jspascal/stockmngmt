@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.SaleOrderLineRepository;
 import com.business.stockmngmt.services.SaleOrderLineService;
 import com.business.stockmngmt.validator.SaleOrderLineValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class SaleOrderLineServiceImpl implements SaleOrderLineService {
 
     private SaleOrderLineRepository saleOrderLineRepository;
+
+    @Autowired
     public SaleOrderLineServiceImpl(SaleOrderLineRepository saleOrderLineRepository) {
         this.saleOrderLineRepository = saleOrderLineRepository;
     }

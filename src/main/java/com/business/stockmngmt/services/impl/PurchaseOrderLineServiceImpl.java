@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.PurchaseOrderLineRepository;
 import com.business.stockmngmt.services.PurchaseOrderLineService;
 import com.business.stockmngmt.validator.PurchaseOrderLineValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class PurchaseOrderLineServiceImpl implements PurchaseOrderLineService {
 
     private PurchaseOrderLineRepository purchaseOrderLineRepository;
+
+    @Autowired
     public PurchaseOrderLineServiceImpl(PurchaseOrderLineRepository purchaseOrderLineRepository) {
         this.purchaseOrderLineRepository = purchaseOrderLineRepository;
     }

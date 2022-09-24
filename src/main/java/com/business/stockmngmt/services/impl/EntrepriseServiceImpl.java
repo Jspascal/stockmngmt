@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.EntrepriseRepository;
 import com.business.stockmngmt.services.EntrepriseService;
 import com.business.stockmngmt.validator.EntrepriseValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class EntrepriseServiceImpl implements EntrepriseService {
 
     private EntrepriseRepository entrepriseRepository;
+
+    @Autowired
     public EntrepriseServiceImpl(EntrepriseRepository entrepriseRepository) {
         this.entrepriseRepository = entrepriseRepository;
     }

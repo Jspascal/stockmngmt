@@ -9,6 +9,7 @@ import com.business.stockmngmt.repository.RoleRepository;
 import com.business.stockmngmt.services.RoleService;
 import com.business.stockmngmt.validator.RoleValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,6 +18,8 @@ import java.util.Optional;
 public class RoleServiceImpl implements RoleService {
 
     private RoleRepository roleRepository;
+
+    @Autowired
     public RoleServiceImpl(RoleRepository roleRepository) {
         this.roleRepository = roleRepository;
     }
