@@ -1,6 +1,5 @@
 package com.business.stockmngmt.dto;
 
-import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.Category;
 import lombok.Builder;
 import lombok.Data;

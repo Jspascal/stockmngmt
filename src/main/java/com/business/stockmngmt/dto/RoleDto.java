@@ -1,7 +1,6 @@
 package com.business.stockmngmt.dto;
 
 import com.business.stockmngmt.model.Role;
-import com.business.stockmngmt.model.User;
 import lombok.Builder;
 import lombok.Data;
 

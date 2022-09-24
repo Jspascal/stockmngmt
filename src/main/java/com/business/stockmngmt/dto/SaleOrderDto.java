@@ -2,7 +2,6 @@ package com.business.stockmngmt.dto;
 
 import com.business.stockmngmt.model.Client;
 import com.business.stockmngmt.model.SaleOrder;
-import com.business.stockmngmt.model.SaleOrderLine;
 import lombok.Builder;
 import lombok.Data;
 import net.minidev.json.annotate.JsonIgnore;

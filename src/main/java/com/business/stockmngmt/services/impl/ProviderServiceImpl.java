@@ -10,9 +10,11 @@ import com.business.stockmngmt.services.ProviderService;
 import com.business.stockmngmt.validator.ProviderValidator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.oauth2.client.registration.ClientRegistration.ProviderDetails;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class ProviderServiceImpl implements ProviderService {
@@ -25,28 +27,29 @@ public class ProviderServiceImpl implements ProviderService {
     }
 
     /**
-     * @param providerDto - DTO representation
-     * @throws InvalidEntityException - throw an exception the validation fails
+     * It takes a ProviderDto object, validates it, and if it's valid, saves it to the database
+     *
+     * @param providerDto The object that is being validated.
      * @return ProviderDto
      */
     @Override
     public ProviderDto save(ProviderDto providerDto) {
         List<String> errors = ProviderValidator.validate(providerDto);
-        if(!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
             log.error("Provider is not valid {}", providerDto);
             throw new InvalidEntityException("Article is not valid", ErrorCodes.PROVIDER_NOT_VALID, errors);
         }
         return ProviderDto.fromEntity(
                 providerRepository.save(
-                        ProviderDto.toEntity(providerDto)
-                )
-        );
+                        ProviderDto.toEntity(providerDto)));
     }
 
     /**
-     * @param id -
-     * @throws EntityNotFoundException -
-     * @return ProviderDto
+     * If the id is null, log an error and return null, otherwise, return the providerDto from the
+     * entity or throw an exception if the entity is not found.
+     *
+     * @param id The ID of the provider to be found
+     * @return A ProviderDto object
      */
     @Override
     public ProviderDto findById(Integer id) {
@@ -55,26 +58,40 @@ public class ProviderServiceImpl implements ProviderService {
             return null;
         }
 
-        Optional<Provider> provider = providerRepository.findById(id);
-
-        return Optional.of(ProviderDto.fromEntity(provider.get())).orElseThrow(() ->
-                new EntityNotFoundException(
+        return providerRepository.findById(id)
+                .map(ProviderDto::fromEntity)
+                .orElseThrow(() -> new EntityNotFoundException(
                         "No article with the ID " + id + "inside the database",
-                        ErrorCodes.PROVIDER_NOT_FOUND
-                )
-        );
+                        ErrorCodes.PROVIDER_NOT_FOUND));
     }
 
+    /**
+     * This function returns a list of ProviderDto objects, which are created by mapping the
+     * ProviderRepository's findAll() function to a stream of ProviderDto objects, which are then
+     * collected into a list.
+     *
+     * @return A list of ProviderDto objects.
+     */
     @Override
     public List<ProviderDto> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return providerRepository.findAll().stream()
+                .map(ProviderDto::fromEntity)
+                .collect(Collectors.toList());
     }
 
+    /**
+     * The function deletes a provider from the database
+     *
+     * @param id The ID of the provider to delete.
+     */
     @Override
     public void delete(Integer id) {
-        // TODO Auto-generated method stub
+        if (id == null) {
+            log.error("Provider ID is null");
+            return;
+        }
 
+        providerRepository.deleteById(id);
     }
 
 }

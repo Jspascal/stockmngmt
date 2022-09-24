@@ -23,15 +23,17 @@ public class ArticleServiceImpl implements ArticleService {
 
     private ArticleRepository articleRepository;
 
+    // It's a constructor injection.
     @Autowired
     public ArticleServiceImpl(ArticleRepository articleRepository) {
         this.articleRepository = articleRepository;
     }
 
     /**
-     * @param articleDto - DTO representation
-     * @throws InvalidEntityException - throw an exception the validation fails
-     * @return ArticleDto
+     * It validates the article, if it's not valid, it throws an exception
+     *
+     * @param articleDto The object that is being validated.
+     * @return ArticleDto.fromEntity(articleRepository.save(ArticleDto.toEntity(articleDto)));
      */
     @Override
     public ArticleDto save(ArticleDto articleDto) {
@@ -49,8 +51,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @param id
-     * @throws EntityNotFoundException -
+     * It returns an ArticleDto object from the database, or throws an exception if the article is not
+     * found
+     *
+     * @param id The ID of the article to be found
      * @return ArticleDto
      */
     @Override
@@ -70,7 +74,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @param codeArticle
+     * It returns an ArticleDto object from the database, if the article exists, otherwise it throws an
+     * exception
+     *
+     * @param codeArticle String
      * @return ArticleDto
      */
     @Override
@@ -89,7 +96,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @return List<ArticleDto>
+     * It takes a list of Article entities, converts them to ArticleDto objects, and returns a list of
+     * ArticleDto objects
+     *
+     * @return A list of ArticleDto objects.
      */
     @Override
     public List<ArticleDto> findAll() {
@@ -99,7 +109,9 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     /**
-     * @param id
+     * The function deletes an article from the database by its ID
+     *
+     * @param id The id of the article to be deleted.
      */
     @Override
     public void delete(Integer id) {

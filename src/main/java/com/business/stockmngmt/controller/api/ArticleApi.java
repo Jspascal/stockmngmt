@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import static com.business.stockmngmt.utils.Constants.APP_ROOT;
 
-import java.awt.*;
 import java.util.List;
 
 public interface ArticleApi {

@@ -2,7 +2,6 @@ package com.business.stockmngmt.dto;
 
 import com.business.stockmngmt.model.Address;
 import com.business.stockmngmt.model.Provider;
-import com.business.stockmngmt.model.PurchaseOrder;
 import lombok.Builder;
 import lombok.Data;
 import javax.persistence.Embedded;

@@ -1,10 +1,7 @@
 package com.business.stockmngmt.controller;
 
-import com.business.stockmngmt.controller.api.ArticleApi;
 import com.business.stockmngmt.controller.api.CategoryApi;
-import com.business.stockmngmt.dto.ArticleDto;
 import com.business.stockmngmt.dto.CategoryDto;
-import com.business.stockmngmt.services.ArticleService;
 import com.business.stockmngmt.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
