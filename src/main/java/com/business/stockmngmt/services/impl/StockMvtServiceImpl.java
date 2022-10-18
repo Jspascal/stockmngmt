@@ -26,6 +26,12 @@ public class StockMvtServiceImpl implements StockMvtService {
         this.stockMvtRepository = stockMvtRepository;
     }
 
+    /**
+     * It validates the stockMvtDto, if it's not valid, it throws an exception
+     *
+     * @param stockMvtDto the object to be validated
+     * @return StockMvtDto
+     */
     @Override
     public StockMvtDto save(StockMvtDto stockMvtDto) {
         List<String> errors = StockMvtValidator.validate(stockMvtDto);
@@ -38,6 +44,13 @@ public class StockMvtServiceImpl implements StockMvtService {
                         StockMvtDto.toEntity(stockMvtDto)));
     }
 
+    /**
+     * It returns a StockMvtDto object if the ID is not null, otherwise it throws an
+     * EntityNotFoundException
+     *
+     * @param id the id of the stock movement
+     * @return A StockMvtDto object
+     */
     @Override
     public StockMvtDto findById(Integer id) {
         if (id == null) {
@@ -52,6 +65,12 @@ public class StockMvtServiceImpl implements StockMvtService {
                         ErrorCodes.PURCHASE_ORDER_NOT_FOUND));
     }
 
+    /**
+     * This function takes a list of StockMvt entities, converts them to StockMvtDto objects, and
+     * returns a list of StockMvtDto objects.
+     *
+     * @return A list of StockMvtDto objects.
+     */
     @Override
     public List<StockMvtDto> findAll() {
         return stockMvtRepository.findAll().stream()
@@ -59,6 +78,11 @@ public class StockMvtServiceImpl implements StockMvtService {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * It deletes a stock movement by its ID
+     *
+     * @param id the id of the stock movement to delete
+     */
     @Override
     public void delete(Integer id) {
         if (id == null) {

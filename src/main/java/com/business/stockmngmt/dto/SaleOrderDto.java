@@ -4,7 +4,6 @@ import com.business.stockmngmt.model.Client;
 import com.business.stockmngmt.model.SaleOrder;
 import lombok.Builder;
 import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
 
 import java.time.Instant;
 import java.util.List;
@@ -21,7 +20,6 @@ public class SaleOrderDto {
 
     private Client client;
 
-    @JsonIgnore
     private List<SaleOrderLineDto> saleOrderLines;
 
     /*

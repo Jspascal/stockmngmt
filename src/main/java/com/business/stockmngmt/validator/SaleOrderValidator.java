@@ -8,13 +8,12 @@ import java.util.List;
 
 public class SaleOrderValidator {
 
-    /*
-     * I use this function to validate the datas we get from the form
+    /**
+     * It validates a sale order
      *
-     * @param SaleOrderDto saleOrderDto
-     *
-     * @return java.Util.List<String>
-     * */
+     * @param saleOrderDto the object to be validated
+     * @return A list of strings.
+     */
     public static List<String> validate(SaleOrderDto saleOrderDto) {
         List<String> errors = new ArrayList<>();
 

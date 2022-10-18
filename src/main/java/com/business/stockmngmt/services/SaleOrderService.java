@@ -10,6 +10,8 @@ public interface SaleOrderService {
 
     SaleOrderDto findById(Integer id);
 
+    SaleOrderDto findByRef(String ref);
+
     List<SaleOrderDto> findAll();
 
     void delete(Integer id);
