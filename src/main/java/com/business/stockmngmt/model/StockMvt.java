@@ -25,6 +25,9 @@ public class StockMvt extends AbstractEntity{
     @Column(name = "mvtType")
     private MvtStockType mvtType;
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
     @JoinColumn(name = "idArticle")
     private Article article;

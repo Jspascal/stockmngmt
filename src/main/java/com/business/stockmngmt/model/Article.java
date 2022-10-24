@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
 
 @Data
 @Getter
@@ -33,11 +34,22 @@ public class Article extends AbstractEntity{
     @Column(name = "photoArticle")
     String photoArticle;
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
     @JoinColumn(name = "idCategory")
     private Category category;
 
-    @Column(name = "idEntreprise")
-    private Integer idEntreprise;
+    @OneToMany(mappedBy = "article")
+    private List<SaleLine> saleLines;
 
+    @OneToMany(mappedBy = "article")
+    private List<SaleOrderLine> saleOrderLines;
+
+    @OneToMany(mappedBy = "article")
+    private List<PurchaseOrderLine> purchaseOrderLines;
+
+    @OneToMany(mappedBy = "article")
+    private List<StockMvt> stockMvts;
 }

@@ -68,7 +68,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
                 if (salOrdLine.getArticle() != null)  {
                     Optional<Article> article = articleRepository.findById(salOrdLine.getArticle().getId());
                     if (article.isEmpty()) {
-                        articleErrors.add("Article with id " + salOrdLine.getArticle().getId() + " doesn't exist.")
+                        articleErrors.add("Article with id " + salOrdLine.getArticle().getId() + " doesn't exist.");
                     }
                 }
                 else {

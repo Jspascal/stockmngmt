@@ -22,6 +22,9 @@ public class PurchaseOrder extends AbstractEntity{
     @Column(name = "orderDate")
     private Instant orderDate;
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
     @JoinColumn(name = "idProvider")
     private Provider provider;

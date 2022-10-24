@@ -2,10 +2,7 @@ package com.business.stockmngmt.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
 @Getter
@@ -16,6 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "sale_lines")
 public class SaleLine extends AbstractEntity{
+
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
 
     @ManyToOne
     @JoinColumn(name = "idArticle")

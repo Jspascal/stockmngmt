@@ -22,10 +22,14 @@ public class SaleOrder extends AbstractEntity{
     @Column(name = "orderRate")
     private Instant orderDate;
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
     @ManyToOne
     @JoinColumn(name = "idClient")
     private Client client;
 
     @OneToMany(mappedBy = "saleOrder")
     private List<SaleOrderLine> saleOrderLines;
+
 }

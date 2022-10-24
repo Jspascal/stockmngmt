@@ -36,4 +36,7 @@ public class Client extends AbstractEntity{
     @OneToMany(mappedBy = "client")
     private List<SaleOrder> saleOrders;
 
+    @Column(name = "idEntreprise")
+    private Integer idEntreprise;
+
 }
