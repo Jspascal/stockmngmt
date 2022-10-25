@@ -27,4 +27,7 @@ public class Sale extends AbstractEntity{
 
     @Column(name = "idEntreprise")
     private Integer idEntreprise;
+
+    @OneToMany(mappedBy = "sale")
+    private List<SaleLine> saleLines;
 }

@@ -23,7 +23,7 @@ public class PurchaseOrderDto {
 
     private Integer idEntreprise;
 
-    private List<PurchaseOrderDto> purchaseOrders;
+    private List<PurchaseOrderLineDto> purchaseOrderLines;
 
     public static PurchaseOrderDto fromEntity (PurchaseOrder purchaseOrder) {
         if (purchaseOrder == null) {

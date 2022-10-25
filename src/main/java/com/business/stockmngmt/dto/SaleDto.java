@@ -6,6 +6,7 @@ import com.business.stockmngmt.model.Sale;
 import lombok.Builder;
 import lombok.Data;
 import java.time.Instant;
+import java.util.List;
 
 @Builder
 @Data
@@ -21,6 +22,8 @@ public class SaleDto {
 
     private Integer idEntreprise;
 
+    private List<SaleLineDto> saleLines;
+
     /*
      * function that allow us to map from Sale to SaleDto
      *
@@ -29,7 +32,6 @@ public class SaleDto {
     public static SaleDto fromEntity (Sale sale) {
         if (sale == null) {
             throw new EntityNotFoundException("Couldn't find object", ErrorCodes.SALE_NOT_FOUND);
-
         }
 
         return SaleDto.builder()

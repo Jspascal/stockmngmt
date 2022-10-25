@@ -42,9 +42,9 @@ public class SaleOrderServiceImpl implements SaleOrderService {
     }
 
     /**
-     * It saves a sale order and its lines
+     * It saves a sale order and its sale order lines
      *
-     * @param saleOrderDto the object that I want to save
+     * @param saleOrderDto the object that is being saved.
      * @return A SaleOrderDto object.
      */
     @Override
@@ -52,7 +52,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
         List<String> errors = SaleOrderValidator.validate(saleOrderDto);
         if(!errors.isEmpty()) {
             log.error("SaleOrder is not valid {}", saleOrderDto);
-            throw new InvalidEntityException("Article is not valid", ErrorCodes.PURCHASE_ORDER_NOT_VALID, errors);
+            throw new InvalidEntityException("Sale Order is not valid", ErrorCodes.SALE_ORDER_NOT_FOUND, errors);
         }
 
         // Checking if the client exists in the database.
@@ -79,7 +79,7 @@ public class SaleOrderServiceImpl implements SaleOrderService {
 
             if (!articleErrors.isEmpty()) {
                 log.warn(" ");
-                throw new InvalidEntityException("Article not found in the database", ErrorCodes.ARTICLE_NOT_FOUND, articleErrors);
+                throw new InvalidEntityException("article not found in the database", ErrorCodes.PURCHASE_ORDER_NOT_FOUND, articleErrors);
             }
         }
 

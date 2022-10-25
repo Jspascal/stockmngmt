@@ -10,6 +10,8 @@ public interface PurchaseOrderService {
 
     PurchaseOrderDto findById(Integer id);
 
+    PurchaseOrderDto findByCode(String Code);
+
     List<PurchaseOrderDto> findAll();
 
     void delete(Integer id);

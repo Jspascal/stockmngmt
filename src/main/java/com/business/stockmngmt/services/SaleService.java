@@ -10,6 +10,8 @@ public interface SaleService {
 
     SaleDto findById(Integer id);
 
+    SaleDto findByCode(String code);
+
     List<SaleDto> findAll();
 
     void delete(Integer id);
