@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Provider;
 import com.business.stockmngmt.model.PurchaseOrder;
 import lombok.Builder;
@@ -19,13 +21,14 @@ public class PurchaseOrderDto {
 
     private Provider provider;
 
+    private Integer idEntreprise;
+
     private List<PurchaseOrderDto> purchaseOrders;
 
     public static PurchaseOrderDto fromEntity (PurchaseOrder purchaseOrder) {
         if (purchaseOrder == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PURCHASE_ORDER_NOT_FOUND);
 
-            return null;
         }
 
         return PurchaseOrderDto.builder()
@@ -33,6 +36,7 @@ public class PurchaseOrderDto {
                 .codeOrder(purchaseOrder.getCodeOrder())
                 .orderDate(purchaseOrder.getOrderDate())
                 .provider(purchaseOrder.getProvider())
+                .idEntreprise(purchaseOrder.getIdEntreprise())
                 .build();
     }
 
@@ -43,9 +47,8 @@ public class PurchaseOrderDto {
      * */
     public static PurchaseOrder toEntity (PurchaseOrderDto purchaseOrderDto) {
         if (purchaseOrderDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PURCHASE_ORDER_NOT_FOUND);
 
-            return null;
         }
 
         PurchaseOrder purchaseOrder = new PurchaseOrder();
@@ -53,6 +56,7 @@ public class PurchaseOrderDto {
         purchaseOrder.setCodeOrder(purchaseOrderDto.getCodeOrder());
         purchaseOrder.setOrderDate(purchaseOrderDto.getOrderDate());
         purchaseOrder.setProvider(purchaseOrderDto.getProvider());
+        purchaseOrder.setIdEntreprise(purchaseOrderDto.getIdEntreprise());
 
         return purchaseOrder;
     }

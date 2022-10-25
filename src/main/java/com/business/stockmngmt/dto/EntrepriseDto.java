@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Address;
 import com.business.stockmngmt.model.Entreprise;
 import lombok.Builder;
@@ -38,9 +40,8 @@ public class EntrepriseDto {
      * */
     public static EntrepriseDto fromEntity (Entreprise entreprise) {
         if (entreprise == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ENTREPRISE_NOT_FOUND);
 
-            return null;
         }
 
         return EntrepriseDto.builder()
@@ -61,9 +62,8 @@ public class EntrepriseDto {
      * */
     public static Entreprise toEntity (EntrepriseDto entrepriseDto) {
         if (entrepriseDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ENTREPRISE_NOT_FOUND);
 
-            return null;
         }
 
         Entreprise entreprise = new Entreprise();

@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class PurchaseOrderLineServiceImpl implements PurchaseOrderLineService {
@@ -65,10 +67,17 @@ public class PurchaseOrderLineServiceImpl implements PurchaseOrderLineService {
         );
     }
 
+    /**
+     * It takes a list of purchase order lines, maps them to a list of purchase order line DTOs, and
+     * returns the list of purchase order line DTOs
+     *
+     * @return A list of PurchaseOrderLineDto objects.
+     */
     @Override
     public List<PurchaseOrderLineDto> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return purchaseOrderLineRepository.findAll().stream()
+            .map(PurchaseOrderLineDto::fromEntity)
+            .collect(Collectors.toList());
     }
 
     @Override

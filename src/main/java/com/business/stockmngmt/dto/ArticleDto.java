@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.Category;
 import lombok.Builder;
@@ -25,7 +27,7 @@ public class ArticleDto {
     String photoArticle;
 
     private Category category;
-    
+
     private Integer idEntreprise;
 
     /*
@@ -35,8 +37,8 @@ public class ArticleDto {
      * */
     public static ArticleDto fromEntity (Article article) {
         if (article == null) {
-            //TODO raise an exception
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ARTICLE_NOT_FOUND);
+
         }
 
         return ArticleDto.builder()
@@ -58,8 +60,8 @@ public class ArticleDto {
      * */
     public static Article toEntity (ArticleDto articleDto) {
         if (articleDto == null) {
-            //TODO raise an exception
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ARTICLE_NOT_FOUND);
+
         }
 
         Article article = new Article();

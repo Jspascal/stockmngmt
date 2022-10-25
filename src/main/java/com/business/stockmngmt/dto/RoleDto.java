@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Role;
 import lombok.Builder;
 import lombok.Data;
@@ -16,9 +18,8 @@ public class RoleDto {
 
     public static RoleDto fromEntity (Role role) {
         if (role == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ROLE_NOT_FOUND);
 
-            return null;
         }
 
         return RoleDto.builder()
@@ -35,9 +36,8 @@ public class RoleDto {
      * */
     public static Role toEntity (RoleDto roleDto) {
         if (roleDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ROLE_NOT_FOUND);
 
-            return null;
         }
 
         Role role = new Role();

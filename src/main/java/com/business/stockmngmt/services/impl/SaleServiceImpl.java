@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class SaleServiceImpl implements SaleService {
@@ -65,10 +66,17 @@ public class SaleServiceImpl implements SaleService {
         );
     }
 
+    /**
+     * It takes a list of Sale entities, maps them to SaleDto objects, and returns a list of SaleDto
+     * objects
+     *
+     * @return A list of SaleDto objects.
+     */
     @Override
     public List<SaleDto> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return saleRepository.findAll().stream()
+            .map(SaleDto::fromEntity)
+            .collect(Collectors.toList());
     }
 
     @Override

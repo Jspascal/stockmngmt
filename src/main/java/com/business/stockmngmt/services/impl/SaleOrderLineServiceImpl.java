@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class SaleOrderLineServiceImpl implements SaleOrderLineService {
@@ -65,10 +66,17 @@ public class SaleOrderLineServiceImpl implements SaleOrderLineService {
         );
     }
 
+    /**
+     * It takes a list of SaleOrderLine entities, maps them to SaleOrderLineDto objects, and returns a
+     * list of SaleOrderLineDto objects
+     *
+     * @return A list of SaleOrderLineDto objects.
+     */
     @Override
     public List<SaleOrderLineDto> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return saleOrderLineRepository.findAll().stream()
+            .map(SaleOrderLineDto::fromEntity)
+            .collect(Collectors.toList());
     }
 
     @Override

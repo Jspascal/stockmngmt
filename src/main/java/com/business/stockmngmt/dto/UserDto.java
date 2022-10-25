@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Address;
 import com.business.stockmngmt.model.Entreprise;
 import com.business.stockmngmt.model.Role;
@@ -7,7 +9,6 @@ import com.business.stockmngmt.model.User;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.*;
 
 @Builder
 @Data
@@ -41,9 +42,8 @@ public class UserDto {
      * */
     public static UserDto fromEntity (User user) {
         if (user == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.USER_NOT_FOUND);
 
-            return null;
         }
 
         return UserDto.builder()
@@ -66,9 +66,7 @@ public class UserDto {
      * */
     public static User toEntity (UserDto userDto) {
         if (userDto == null) {
-            //TODO raise an exception
-
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.USER_NOT_FOUND);
         }
 
         User user = new User();

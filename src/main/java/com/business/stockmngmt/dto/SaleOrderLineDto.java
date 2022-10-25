@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.SaleOrder;
 import com.business.stockmngmt.model.SaleOrderLine;
@@ -12,6 +14,8 @@ public class SaleOrderLineDto {
 
     private Integer id;
 
+    private Integer idEntreprise;
+
     private Article article;
 
     private SaleOrder saleOrder;
@@ -23,13 +27,12 @@ public class SaleOrderLineDto {
      * */
     public static SaleOrderLineDto fromEntity (SaleOrderLine saleOrderLine) {
         if (saleOrderLine == null) {
-            //TODO raise an exception
-
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.SALE_ORDER_LINE_NOT_FOUND)
         }
 
         return SaleOrderLineDto.builder()
                 .id(saleOrderLine.getId())
+                .idEntreprise(saleOrderLine.getIdEntreprise())
                 .article(saleOrderLine.getArticle())
                 .saleOrder(saleOrderLine.getSaleOrder())
                 .build();
@@ -42,13 +45,12 @@ public class SaleOrderLineDto {
      * */
     public static SaleOrderLine toEntity (SaleOrderLineDto saleOrderLineDto) {
         if (saleOrderLineDto == null) {
-            //TODO raise an exception
-
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.SALE_ORDER_LINE_NOT_FOUND);
         }
 
         SaleOrderLine saleOrderLine = new SaleOrderLine();
         saleOrderLine.setId(saleOrderLineDto.getId());
+        saleOrderLine.setIdEntreprise(saleOrderLineDto.getIdEntreprise());
         saleOrderLine.setArticle(saleOrderLineDto.getArticle());
         saleOrderLine.setSaleOrder(saleOrderLineDto.getSaleOrder());
 

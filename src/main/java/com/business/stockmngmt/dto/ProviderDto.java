@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Address;
 import com.business.stockmngmt.model.Provider;
 import lombok.Builder;
@@ -26,6 +28,8 @@ public class ProviderDto {
 
     private String numTelProvider;
 
+    private Integer idEntreprise;
+
     private List<PurchaseOrderDto> purchaseOrders;
 
     /*
@@ -35,9 +39,8 @@ public class ProviderDto {
      * */
     public static ProviderDto fromEntity (Provider provider) {
         if (provider == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PROVIDER_NOT_FOUND);
 
-            return null;
         }
 
         return ProviderDto.builder()
@@ -47,6 +50,7 @@ public class ProviderDto {
                 .photoProvider(provider.getPhotoProvider())
                 .emailProvider(provider.getEmailProvider())
                 .numTelProvider(provider.getNumProvider())
+                .idEntreprise(provider.getIdEntreprise())
                 .build();
     }
 
@@ -57,9 +61,8 @@ public class ProviderDto {
      * */
     public static Provider toEntity (ProviderDto providerDto) {
         if (providerDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PROVIDER_NOT_FOUND);
 
-            return null;
         }
 
         Provider provider = new Provider();
@@ -69,6 +72,7 @@ public class ProviderDto {
         provider.setPhotoProvider(providerDto.getPhotoProvider());
         provider.setEmailProvider(providerDto.getEmailProvider());
         provider.setNumProvider(providerDto.getNumTelProvider());
+        provider.setIdEntreprise(providerDto.getIdEntreprise());
 
         return provider;
     }

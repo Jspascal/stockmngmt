@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Address;
 import com.business.stockmngmt.model.Client;
 import lombok.Builder;
@@ -26,6 +28,8 @@ public class ClientDto {
 
     private String numTelClient;
 
+    private Integer idEntreprise;
+
     private List<SaleOrderDto> saleOrders;
 
     /*
@@ -35,9 +39,8 @@ public class ClientDto {
      * */
     public static ClientDto fromEntity (Client client) {
         if (client == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.CLIENT_NOT_FOUND);
 
-            return null;
         }
 
         return ClientDto.builder()
@@ -47,6 +50,7 @@ public class ClientDto {
                 .photoClient(client.getPhotoClient())
                 .emailClient(client.getEmailClient())
                 .numTelClient(client.getNumTelClient())
+                .idEntreprise(client.getIdEntreprise())
                 .build();
     }
 
@@ -57,9 +61,8 @@ public class ClientDto {
      * */
     public static Client toEntity (ClientDto clientDto) {
         if (clientDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.CLIENT_NOT_FOUND);
 
-            return null;
         }
 
         Client client = new Client();
@@ -69,6 +72,7 @@ public class ClientDto {
         client.setPhotoClient(clientDto.getPhotoClient());
         client.setEmailClient(clientDto.getEmailClient());
         client.setNumTelClient(clientDto.getNumTelClient());
+        client.setIdEntreprise(clientDto.getIdEntreprise());
 
         return client;
     }

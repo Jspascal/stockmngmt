@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
@@ -138,8 +139,9 @@ public class SaleOrderServiceImpl implements SaleOrderService {
      */
     @Override
     public List<SaleOrderDto> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+        return saleOrderRepository.findAll().stream()
+            .map(SaleOrderDto::fromEntity)
+            .collect(Collectors.toList());
     }
 
     /**

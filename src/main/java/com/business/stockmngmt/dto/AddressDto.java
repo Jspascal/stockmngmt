@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Address;
 import lombok.Builder;
 import lombok.Data;
@@ -25,8 +27,8 @@ public class AddressDto {
     * */
     public static AddressDto fromEntity (Address address) {
         if (address == null) {
-            //TODO raise an exception
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ADDRESS_NOT_FOUND);
+
         }
 
         return AddressDto.builder()
@@ -45,8 +47,8 @@ public class AddressDto {
      * */
     public static Address toEntity (AddressDto addressDto) {
         if (addressDto == null) {
-            //TODO raise an exception
-            return null;
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.ADDRESS_NOT_FOUND);
+
         }
 
         Address address = new Address();

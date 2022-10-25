@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.PurchaseOrderLine;
 import com.business.stockmngmt.model.PurchaseOrder;
@@ -14,6 +16,8 @@ public class PurchaseOrderLineDto {
 
     private Article article;
 
+    private Integer idEntreprise;
+
     private PurchaseOrder purchaseOrder;
 
     /*
@@ -23,14 +27,14 @@ public class PurchaseOrderLineDto {
      * */
     public static PurchaseOrderLineDto fromEntity (PurchaseOrderLine purchaseOrderLine) {
         if (purchaseOrderLine == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PURCHASE_ORDER_LINE_NOT_FOUND);
 
-            return null;
         }
 
         return PurchaseOrderLineDto.builder()
                 .id(purchaseOrderLine.getId())
                 .article(purchaseOrderLine.getArticle())
+                .idEntreprise(purchaseOrderLine.getIdEntreprise())
                 .purchaseOrder(purchaseOrderLine.getPurchaseOrder())
                 .build();
     }
@@ -42,14 +46,14 @@ public class PurchaseOrderLineDto {
      * */
     public static PurchaseOrderLine toEntity (PurchaseOrderLineDto purchaseOrderLineDto) {
         if (purchaseOrderLineDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.PURCHASE_ORDER_LINE_NOT_FOUND);
 
-            return null;
         }
 
         PurchaseOrderLine purchaseOrderLine = new PurchaseOrderLine();
         purchaseOrderLine.setId(purchaseOrderLineDto.getId());
         purchaseOrderLine.setArticle(purchaseOrderLineDto.getArticle());
+        purchaseOrderLine.setIdEntreprise(purchaseOrderLineDto.getIdEntreprise());
         purchaseOrderLine.setPurchaseOrder(purchaseOrderLineDto.getPurchaseOrder());
 
         return purchaseOrderLine;

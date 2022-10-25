@@ -1,5 +1,7 @@
 package com.business.stockmngmt.dto;
 
+import com.business.stockmngmt.exception.EntityNotFoundException;
+import com.business.stockmngmt.exception.ErrorCodes;
 import com.business.stockmngmt.model.Article;
 import com.business.stockmngmt.model.MvtStockType;
 import com.business.stockmngmt.model.StockMvt;
@@ -18,6 +20,8 @@ public class StockMvtDto {
 
     private BigDecimal quantity;
 
+    private Integer idEntreprise;
+
     private MvtStockType mvtType;
 
     private Article article;
@@ -29,9 +33,8 @@ public class StockMvtDto {
      * */
     public static StockMvtDto fromEntity (StockMvt stockMvt) {
         if (stockMvt == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.STOCK_MVT_NOT_FOUND);
 
-            return null;
         }
 
         return StockMvtDto.builder()
@@ -39,6 +42,7 @@ public class StockMvtDto {
                 .mvtDate(stockMvt.getMvtDate())
                 .mvtType(stockMvt.getMvtType())
                 .quantity(stockMvt.getQuantity())
+                .idEntreprise(stockMvt.getIdEntreprise())
                 .article(stockMvt.getArticle())
                 .build();
     }
@@ -50,9 +54,8 @@ public class StockMvtDto {
      * */
     public static StockMvt toEntity (StockMvtDto stockMvtDto) {
         if (stockMvtDto == null) {
-            //TODO raise an exception
+            throw new EntityNotFoundException("Couldn't find object", ErrorCodes.STOCK_MVT_NOT_FOUND);
 
-            return null;
         }
 
         StockMvt stockMvt = new StockMvt();
@@ -60,6 +63,7 @@ public class StockMvtDto {
         stockMvt.setMvtDate(stockMvtDto.getMvtDate());
         stockMvt.setMvtType(stockMvtDto.getMvtType());
         stockMvt.setQuantity(stockMvtDto.getQuantity());
+        stockMvt.setIdEntreprise(stockMvtDto.getIdEntreprise());
         stockMvt.setArticle(stockMvtDto.getArticle());
 
         return stockMvt;
